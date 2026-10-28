@@ -8,7 +8,7 @@ pipeline {
         git branch: 'main',url:'https://github.com/anilgit432/staticcode-deploy.git'
       }
     }
-    stage ('deploy'){
+    stage ('deploy to node1'){
       agent{
         label 'newnode'}
       steps {
@@ -19,7 +19,7 @@ pipeline {
         '''
       }
         }
-    stage ('deploy'){
+    stage ('deploy to node2'){
       agent{
         label '2nd new node'}
       steps {
@@ -31,7 +31,7 @@ pipeline {
         '''
       }
     }
-    stage ('verify website'){
+    stage ('verify node1'){
     agent{
       label 'newnode'}
     steps{
@@ -41,7 +41,7 @@ pipeline {
                 '''
     }
     }
-    stage ('verify website'){
+    stage ('verify node2'){
     agent{
       label '2nd new node'}
     steps{
