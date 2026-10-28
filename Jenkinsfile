@@ -3,17 +3,16 @@ pipeline {
   stages {
     stage ('checkout'){
       agent{
-        label 'jenkin-1'}
+        label 'newnode'}
       steps {
         git branch: 'main',url:'https://github.com/anilgit432/staticcode-deploy.git'
       }
     }
     stage ('deploy'){
       agent{
-        label 'jenkin-1'}
+        label 'newnode'}
       steps {
         sh '''
-        echo "===== CONTROLLER NODE ====="
         hostname
         sudo cp index.html /var/www/html/index.html
         sudo systemctl restart apache2 
@@ -22,7 +21,7 @@ pipeline {
         }
     stage ('verify website'){
     agent{
-      label 'jenkin-1'}
+      label 'newnode'}
     steps{
       sh '''
 
